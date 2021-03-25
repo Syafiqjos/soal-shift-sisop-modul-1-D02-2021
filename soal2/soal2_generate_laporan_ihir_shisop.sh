@@ -83,7 +83,7 @@ END {print("Transaksi terakhir dengan profit percentage terbesar yaitu " orderid
     print("Daftar nama customer di Albuquerque pada tahun 2017 antara lain: ")
     for (i in custname)
         print i
-    print("\n")
+    
     if (consumer < corporate && consumer < homeoffice)
     {
         totaltranskecil = consumer
@@ -100,6 +100,7 @@ END {print("Transaksi terakhir dengan profit percentage terbesar yaitu " orderid
         segmentkecil = "Home Office"
     }
     print ("Tipe segmen customer yang penjualannya paling sedikit adalah " segmentkecil " dengan " totaltranskecil " transaksi.\n")
+    
     if (central < east && central < south && central < west)
     {
         terkecil = central
