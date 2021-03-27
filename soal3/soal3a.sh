@@ -8,7 +8,7 @@ do
 	filename=`printf "%02d" $id`
 	filebaru=`printf "Koleksi_$filename"`
 
-	wget "$url" -O "$filebaru"
+	wget -O "$filebaru" -a Foto.log "$url"
 
 	same=0
 
