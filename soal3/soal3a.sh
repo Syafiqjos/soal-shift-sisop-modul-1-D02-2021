@@ -8,16 +8,15 @@ do
 	filename=`printf "%02d" $id`
 	filebaru=`printf "Koleksi_$filename"`
 
-	wget -O "$filebaru" -a Foto.log "$url"
+	wget -O "$filebaru" -a "Foto.log" "$url"
 
 	same=0
 
+	#iterating setiap files pada $folder
 	for file in *; do
-		echo "$file -> $filebaru"
-		if [ "$file" == "$filebaru" ]
+		#Membandingkan file baru dengan file - file lama
+		if [ ! "$file" == "$filebaru" ]
 		then
-			echo "Kembar"
-		else
 			if cmp "$file" "$filebaru"
 			then
 				same=1
@@ -26,12 +25,12 @@ do
 		fi
 	done
 
-	if [ $same -eq 1 ]
+	if [ ! $same -eq 1 ]
 	then
-		#rm "$filebaru"
-		echo "hapus kembar"
-	else
 		let id=id+1
-		echo "tambah id"
+		echo "$filebaru berhasil di download"
+	else
+		rm $filebaru
+		echo "$filebaru udah ada, jadi dihapus aja"
 	fi
 done
