@@ -5,13 +5,8 @@ BEGIN {
     max = 0;
     rowidmax =0;
     orderid =0;
-    consumer = 0;
-    homeoffice = 0;
-    corporate =0;
-    central = 0;
-    east = 0;
-    south =0;
-    west = 0;
+    totaltranskecil = 9999999999;
+    profitkecil = 999999999999;
 }
 {
     //A
@@ -28,6 +23,7 @@ BEGIN {
             orderid=$2
             }
     }
+
     //B
     orderid = $2
     city = $10
@@ -39,43 +35,19 @@ BEGIN {
             custname[$7]
         }
     }
+
     //C
     segment = $8
     if (segment != "Segment")
     {
-        if (segment == "Consumer")
-        {   
-            consumer++
-        }
-        else if (segment == "Corporate")
-        {
-            corporate++
-        }
-        else if (segment == "Home Office")
-        {
-            homeoffice++
-        }
+    cust_segment[segment]++
     }
+
     //D
-    region = $13
-    if (region != "Region")
+    reg = $13
+    if (reg != "Region")
     {
-        if (region == "Central")
-        {   
-            central += $21
-        }
-        else if (region == "East")
-        {
-            east += $21
-        }
-        else if (region == "South")
-        {
-            south += $21
-        }
-        else if (region == "West")
-        {
-            west += $21
-        }
+        region[reg]+= $21
     }
 }
 END {print("Transaksi terakhir dengan profit percentage terbesar yaitu " orderid " dengan persentase " max "%.\n")
@@ -83,43 +55,21 @@ END {print("Transaksi terakhir dengan profit percentage terbesar yaitu " orderid
     print("Daftar nama customer di Albuquerque pada tahun 2017 antara lain: ")
     for (i in custname)
         print i
-    
-    if (consumer < corporate && consumer < homeoffice)
-    {
-        totaltranskecil = consumer
-        segmentkecil = "Consumer"
-    }
-    else if (corporate < consumer && corporate < homeoffice)
-    {
-        totaltranskecil = corporate
-        segmentkecil = "Corporate"
-    }
-    else if (homeoffice < consumer && homeoffice < corporate)
-    {
-        totaltranskecil = homeoffice
-        segmentkecil = "Home Office"
+    print("\n")
+
+    for (i in cust_segment){
+        if(cust_segment[i] <= totaltranskecil){
+            segmentkecil = i
+            totaltranskecil = cust_segment[i]
+        }
     }
     print ("Tipe segmen customer yang penjualannya paling sedikit adalah " segmentkecil " dengan " totaltranskecil " transaksi.\n")
-    
-    if (central < east && central < south && central < west)
-    {
-        terkecil = central
-        regionkecil = "Central"
+
+    for (i in region){
+        if(region[i] <= profitkecil){
+            regionkecil = i
+            profitkecil = region[i]
+        }
     }
-    else if (east < central && east < south && east < west)
-    {
-        terkecil = east
-        regionkecil = "East"
-    }
-    else if (south < central && south < east && south < west)
-    {
-        terkecil = south
-        regionkecil = "South"
-    }
-    else if (west < central && west < east && west < south)
-    {
-        terkecil = west
-        regionkecil = "West"
-    }
-    print ("Wilayah bagian (region) yang memiliki total keuntungan (profit) yang paling sedikit adalah " regionkecil " dengan total keuntungan " terkecil)
-    }' Laporan-TokoShiSop.tsv >> hasil.txt
+    print ("Wilayah bagian (region) yang memiliki total keuntungan (profit) yang paling sedikit adalah " regionkecil " dengan total keuntungan " profitkecil)
+    }' Laporan-TokoShiSop.tsv > hasil.txt
