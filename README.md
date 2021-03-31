@@ -54,7 +54,51 @@ Kendala yang terjadi pada saat mendapatkan value dari tahun transaksi, namun akh
 3. Pada block ```END``` mencari segment yang memiliki total transaksi paling sedikit. Kemudian menampilkan hasil sesuai yang diminta pada soal.
 
 #### Kendala
-Pada awalnya, kami mencari segment yang paling kecil dengan membuat variabel yang berbeda pada setiap segment lalu mengidentifikasinya menggunakan kondisi ```if``` atau ```else if``` namun hal ini tidak efisien. 
+Pada awalnya, kami mencari segment yang paling kecil dengan membuat variabel yang berbeda pada setiap segment lalu mengidentifikasinya menggunakan kondisi ```if``` atau ```else if``` namun hal ini tidak efisien seperti di bawah ini. 
+```bash
+#!/bin/bash
+
+awk -F "\t" '
+BEGIN {consumer = 0
+        homeoffice = 0
+        corporate =0}
+{   
+    segment = $8
+    if (segment != "Segment")
+    {
+        if (segment == "Consumer")
+        {   
+            consumer++
+        }
+        else if (segment == "Corporate")
+        {
+            corporate++
+        }
+        else if (segment == "Home Office")
+        {
+            homeoffice++
+        }
+    }
+}
+END {
+    if (consumer < corporate && consumer < homeoffice)
+    {
+        totaltranskecil = consumer
+        segmentkecil = "Consumer"
+    }
+    else if (corporate < consumer && corporate < homeoffice)
+    {
+        totaltranskecil = corporate
+        segmentkecil = "Corporate"
+    }
+    else if (homeoffice < consumer && homeoffice < corporate)
+    {
+        totaltranskecil = homeoffice
+        segmentkecil = "Home Office"
+    }
+    print segmentkecil, totaltranskecil}' Laporan-TokoShiSop.tsv
+ ```
+
 Kemudian kami revisi dengan menggunakan array untuk menyimpan jumlah tersebut sehingga menjadi lebih efisien.
 
 ### D. Mencari region yang memiliki jumlah profit yang paling sedikit
@@ -68,7 +112,7 @@ Kemudian kami revisi dengan menggunakan array untuk menyimpan jumlah tersebut se
 3. Pada block ```END``` mencari segment yang memiliki total transaksi paling sedikit. Kemudian menampilkan hasil sesuai yang diminta pada soal.
 
 #### Kendala
-Untuk nomor 2d ini memiliki kendala yang hampir mirip dengan 2c
+Untuk nomor 2d ini memiliki kendala yang hampir mirip dengan 2c.
 
 ### 2e
 memasukkan seluruh code ke dalam suatu file txt
