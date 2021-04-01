@@ -10,35 +10,66 @@ Tujuan : Menganalisa log dari aplikasi dengan cara membagi Log ERROR dan INFO me
 ![image](https://user-images.githubusercontent.com/16128257/113279700-9e064100-930d-11eb-8e86-c2f6adeb2a28.png)
 
 #### Cara Pengerjaan
+1. Menginisialisasi variable ```logFilename``` untuk mempermudah dalam memanggil file log.
+2. Menggunakan ```grep``` dengan parameter ```-E``` agar dapat menyaring log dengan regex kompleks. Yang pertama menggunakan regex untuk menyaring ERROR, lalu kedua untuk menyaring INFO.
+3. Menggunakan ```wc``` word count dengan parameter ```-l``` untuk menghitung jumlah record atau baris yang didapatkan dari grep sebelumnya.
+
 #### Kendala
+Tidak ada.
 
 ### B. Menyaring seluruh Log ERROR dan menghitung jumlahnya
 
 ![image](https://user-images.githubusercontent.com/16128257/113279749-ac545d00-930d-11eb-9a29-c6984295ad5b.png)
 
 #### Cara Pengerjaan
+1. Dari operasi ```grep``` ERROR pada Nomor A, kami saring ulang, untuk mencari jenis deskripsi dengan cara menggunakan ```grep``` dengan parameter ```-P``` perl dan ```-o``` untuk mengoutputkan yang match saja.
+2. Untuk menghitung banyaknya line dari masing - masing deskripsi, maka menggunakan ```sort``` untuk mengurutkan nama secara leksikografis.
+3. Setelah terurut, menggunakan command ```uniq``` dengan parameter ```-c``` untuk menghitung banyaknya line dengan deskripsi yang unik pada masing - masing deskripsi.
+4. Setelah masing - masing jumlah deskripsi dihitung, selanjutnya mengurutkannya berdasarkan yang lebih besar dengan ```sort``` dan parameter ```-r```, menggunakan parameter ```-n``` untuk mengurutkan berdasarkan angka.
+
 #### Kendala
+1. Untuk mencari masing - masing ```grep``` yang match menggunakan ```-o```, tapi karena posisi deskripsi log ditengah, maka agak sulit untuk mendapatkan deskripsi tersebut. Jadim menggunakan Perl ```-P``` untuk mencari awalan dari deskripsi yang error ```(?<=ERROR )``` dan diakhiri dengan pembukan tutup kurung user ```(?=\()```.
 
 ### C. Menghitung Log ERROR dan INFO untuk masing - masing Usernya
 
 ![image](https://user-images.githubusercontent.com/16128257/113279796-b9714c00-930d-11eb-945e-b1787664f08a.png)
 
 #### Cara Pengerjaan
+1. Dari operasi ```grep``` INFO pada Nomor A, kami saring ulang, untuk mencari nama user dengan cara menggunakan ```grep``` dengan parameter ```-P``` perl dan ```-o``` untuk mengoutputkan yang match saja.
+
 #### Kendala
+Tidak ada.
 
 ### D. Menyimpan hasil operasi Nomor B pada error_message.csv
 
 ![image](https://user-images.githubusercontent.com/16128257/113279850-c7bf6800-930d-11eb-944b-2fc4e1060e37.png)
 
 #### Cara Pengerjaan
+1. Menginisialisasi nama file ```error_message.csv```
+2. Menyimpan header kolom pada file yang diinisialisasikan.
+3. Untuk setiap baris yang didapatkan pada opsi nomor B menggunakan ```printf``` yang di-pipe dengan ```while read``` yang berarti foreach pada setiap line yang dimasukkan.
+4. Lalu untuk setiap line itu diproses dengan cara menukar kolom awal (jumlah masing - masing deskripsi error), dengan deskripsi error menggunakan command ```cut```.
+5. Menyimpan masing - masing line yang telah dimodifikasi dengan cara append masing - masing line tersebut pada file yang telah diinisialisasikan.
+6. Menampilkan output dengan membaca file yang telah disimpan sebelumnya.
+
 #### Kendala
+1. Melakukan foreach yang agak berbeda pada bash, dengan menggunakan ```printf``` yang di pipe pada ```while read 'text'``` yang merupakan memasukkan input ```printf``` menuju ```while read``` tersebut.
+2. Karena hasil dari jumlah error pada setiap baris terdapat pada kolom pertama, padahal kami membutuhkan untuk meletakkan jumlah baris pada kolom terakhir, maka menggunakan ```cut``` untuk me-split string, dan meletakkannya pada posisi yang benar.
 
 ### E. Menyimpan hasil operasi Nomor C pada user_statistic.csv
 
 ![image](https://user-images.githubusercontent.com/16128257/113279919-ddcd2880-930d-11eb-8395-22bf75b31440.png)
 
 #### Cara Pengerjaan
+1. Menginisialisasi nama file ```user_statistic.csv```
+2. Menyimpan header kolom pada file yang diinisialisasikan.
+3. Untuk setiap baris yang didapatkan pada opsi nomor B menggunakan ```printf``` yang di-pipe dengan ```while read``` yang berarti foreach pada setiap line yang dimasukkan.
+4. Lalu untuk setiap line itu diproses dengan cara melakukan ```grep``` untuk menyaring dan ```wc -l``` menghitung jumlah masing - masing ERROR dan INFO pada user pada line ini.
+5. Menyimpan masing - masing line yang telah dimodifikasi dengan cara append masing - masing line tersebut pada file yang telah diinisialisasikan.
+6. Menampilkan output dengan membaca file yang telah disimpan sebelumnya.
+
 #### Kendala
+Tidak ada.
 
 ## Soal2
 Tujuan : Mendapatkan report hasil penjualan dari data pada Laporan-TokoShiSop.tsv
@@ -63,7 +94,7 @@ Tujuan : Mendapatkan report hasil penjualan dari data pada Laporan-TokoShiSop.ts
 8. Pada block ```END``` tinggal menampilkan hasil yang sudah didapat sesuai soal.
 
 #### Kendala
-Tidak terdapat kenala untuk 2a
+Tidak terdapat kendala untuk 2a
 
 ### B. Mendapatkan nama customer yang melakukan transaksi pada tahun 2017 di Albuquerque
 
