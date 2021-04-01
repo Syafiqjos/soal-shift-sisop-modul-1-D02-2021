@@ -4,10 +4,44 @@
 - Maximilian H M Lingga (05111940000092)
 
 ## Soal1
--> menunggu deadline
+Tujuan : Menganalisa log dari aplikasi dengan cara membagi Log ERROR dan INFO menggunakan Regex dan menyimpan data - data yang ada pada error_message.csv dan user_statistic.csv.
+### A. Mengumpulkan informasi log dengan cara memisahkan Log ERROR dan INFO menggunakan Regex
+
+![image](https://user-images.githubusercontent.com/16128257/113279700-9e064100-930d-11eb-8e86-c2f6adeb2a28.png)
+
+#### Cara Pengerjaan
+#### Kendala
+
+### B. Menyaring seluruh Log ERROR dan menghitung jumlahnya
+
+![image](https://user-images.githubusercontent.com/16128257/113279749-ac545d00-930d-11eb-9a29-c6984295ad5b.png)
+
+#### Cara Pengerjaan
+#### Kendala
+
+### C. Menghitung Log ERROR dan INFO untuk masing - masing Usernya
+
+![image](https://user-images.githubusercontent.com/16128257/113279796-b9714c00-930d-11eb-945e-b1787664f08a.png)
+
+#### Cara Pengerjaan
+#### Kendala
+
+### D. Menyimpan hasil operasi Nomor B pada error_message.csv
+
+![image](https://user-images.githubusercontent.com/16128257/113279850-c7bf6800-930d-11eb-944b-2fc4e1060e37.png)
+
+#### Cara Pengerjaan
+#### Kendala
+
+### E. Menyimpan hasil operasi Nomor C pada user_statistic.csv
+
+![image](https://user-images.githubusercontent.com/16128257/113279919-ddcd2880-930d-11eb-8395-22bf75b31440.png)
+
+#### Cara Pengerjaan
+#### Kendala
 
 ## Soal2
-Tujuan = mendapatkan report hasil penjualan dari data pada Laporan-TokoShiSop.tsv
+Tujuan : Mendapatkan report hasil penjualan dari data pada Laporan-TokoShiSop.tsv
 ### A. Mendapatkan Row ID dan Profit Precentage terbesar
 
 ![image](https://user-images.githubusercontent.com/62937814/113160069-56c57500-9267-11eb-91f2-a6d26f8f549b.png)
