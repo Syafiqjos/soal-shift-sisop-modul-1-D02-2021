@@ -63,7 +63,7 @@ Tidak ada.
 #### Cara Pengerjaan
 1. Menginisialisasi nama file ```user_statistic.csv```
 2. Menyimpan header kolom pada file yang diinisialisasikan.
-3. Untuk setiap baris yang didapatkan pada opsi nomor B menggunakan ```printf``` yang di-pipe dengan ```while read``` yang berarti foreach pada setiap line yang dimasukkan.
+3. Untuk setiap baris yang didapatkan pada opsi nomor C menggunakan ```printf``` yang di-pipe dengan ```while read``` yang berarti foreach pada setiap line yang dimasukkan.
 4. Lalu untuk setiap line itu diproses dengan cara melakukan ```grep``` untuk menyaring dan ```wc -l``` menghitung jumlah masing - masing ERROR dan INFO pada user pada line ini.
 5. Menyimpan masing - masing line yang telah dimodifikasi dengan cara append masing - masing line tersebut pada file yang telah diinisialisasikan.
 6. Menampilkan output dengan membaca file yang telah disimpan sebelumnya.
