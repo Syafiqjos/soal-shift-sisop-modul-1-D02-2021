@@ -202,7 +202,9 @@ Tujuan : Mengunduh ,menyimpan dan memindahkan ke zip beberapa file gambar dan lo
 5.	Terakhir, buat 2 kemungkinan hasil pengecekan dengan menggunakan if. Didalam if, kita akan menggunakan -eq untuk membandingkan lagi filenya. Jika file-filenya berbeda, maka $filebaru tersebut akan didownload dan ditandai dengan id bertambah 1. Jika sama, maka $filebaru tadi akan dihapus menggunakan command rm
 
 #### Kendala
-Tidak ada.
+1. Mencari negasi dalam bash, yang ternyata dapat diimplementasikan menggunakan [ ! comparison ]
+2. Mencocokkan file yang sama dapat menggunakan command cmp.
+3. Menggunakan foreach dengan while dan * , untuk foreach file pada folder yang dipilih.
 
 ### 3B. Menjalankan script secara otomatis dan memindahkan gambar dan log-nya ke sebuah folder berpassword.
 
@@ -212,10 +214,10 @@ Tidak ada.
 #### Cara Pengerjaan
 1.	Buat folder baru dengan mkdir $folder. Folder tersebut akan diberi nama tanggal unduh gambar menggunakan `date '+%d-%m-%Y'`.
 2.	Pindahkan gambar-gambar yang diunduh beserta lognya ke folder baru tersebut menggunakan mv.
-3.	Agar dapat dijalankan secara otomatis, file soal3b.sh yang berisi kodingan pada gambar pertama akan dibash menggunakan cron 0 20 1-31/7,2-31/4 * * .
+3.	Agar dapat dijalankan secara otomatis, file soal3b.sh yang berisi kodingan pada gambar pertama akan dibash menggunakan cron 0 20 1-31/7,2-31/4 * *.
 
 #### Kendala
-Tidak ada.
+1. Mengecheck crontab menggunakan crontab guru agar lebih yakin.
 
 ### 3C. Mengunduh gambar tipe pertama dan kedua secara bergantian dan membuat 2 folder terpisah
 
@@ -241,6 +243,9 @@ Tidak ada.
 #### Cara Pengerjaan
 1.	Kita memasukkan file-file gambar ke folder zip menggunakan command zip -r --password "`date '+%m%d%Y'`" Koleksi.zip Kucing_*  Kelinci_* . Perintah zip untuk men-zip, -r untuk mengulang command menyimpan file ke zip, lalu --password digunakan untuk membuat password. Passwordnya adalah tanggal saat ini dengan format MMDDYYYY
 
+#### Kendala
+1. Mencari parameter untuk melakukan zip dengan password dan multi files.
+
 ### 3E. Membuat script yang akan men-zip atau meng-unzip dan menghapus zip folder di waktu-waktu tertentu.
 
 ![image](https://user-images.githubusercontent.com/16128257/113437585-13a70580-9411-11eb-8358-7f05b331f0d5.png)
@@ -252,7 +257,6 @@ Tidak ada.
 
 #### Kendala
 Tidak ada.
-
 
 # Refrensi
 ## 1
