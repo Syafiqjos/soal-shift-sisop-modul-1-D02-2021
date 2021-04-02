@@ -5,7 +5,7 @@
 
 ## Soal1
 Tujuan : Menganalisa log dari aplikasi dengan cara membagi Log ERROR dan INFO menggunakan Regex dan menyimpan data - data yang ada pada error_message.csv dan user_statistic.csv.
-### A. Mengumpulkan informasi log dengan cara memisahkan Log ERROR dan INFO menggunakan Regex
+### 1A. Mengumpulkan informasi log dengan cara memisahkan Log ERROR dan INFO menggunakan Regex
 
 ![image](https://user-images.githubusercontent.com/16128257/113279700-9e064100-930d-11eb-8e86-c2f6adeb2a28.png)
 
@@ -17,7 +17,7 @@ Tujuan : Menganalisa log dari aplikasi dengan cara membagi Log ERROR dan INFO me
 #### Kendala
 Tidak ada.
 
-### B. Menyaring seluruh Log ERROR dan menghitung jumlahnya
+### 1B. Menyaring seluruh Log ERROR dan menghitung jumlahnya
 
 ![image](https://user-images.githubusercontent.com/16128257/113279749-ac545d00-930d-11eb-9a29-c6984295ad5b.png)
 
@@ -30,7 +30,7 @@ Tidak ada.
 #### Kendala
 1. Untuk mencari masing - masing ```grep``` yang match menggunakan ```-o```, tapi karena posisi deskripsi log ditengah, maka agak sulit untuk mendapatkan deskripsi tersebut. Jadim menggunakan Perl ```-P``` untuk mencari awalan dari deskripsi yang error ```(?<=ERROR )``` dan diakhiri dengan pembukan tutup kurung user ```(?=\()```.
 
-### C. Menghitung Log ERROR dan INFO untuk masing - masing Usernya
+### 1C. Menghitung Log ERROR dan INFO untuk masing - masing Usernya
 
 ![image](https://user-images.githubusercontent.com/16128257/113279796-b9714c00-930d-11eb-945e-b1787664f08a.png)
 
@@ -40,7 +40,7 @@ Tidak ada.
 #### Kendala
 Tidak ada.
 
-### D. Menyimpan hasil operasi Nomor B pada error_message.csv
+### 1D. Menyimpan hasil operasi Nomor B pada error_message.csv
 
 ![image](https://user-images.githubusercontent.com/16128257/113279850-c7bf6800-930d-11eb-944b-2fc4e1060e37.png)
 
@@ -56,7 +56,7 @@ Tidak ada.
 1. Melakukan foreach yang agak berbeda pada bash, dengan menggunakan ```printf``` yang di pipe pada ```while read 'text'``` yang merupakan memasukkan input ```printf``` menuju ```while read``` tersebut.
 2. Karena hasil dari jumlah error pada setiap baris terdapat pada kolom pertama, padahal kami membutuhkan untuk meletakkan jumlah baris pada kolom terakhir, maka menggunakan ```cut``` untuk me-split string, dan meletakkannya pada posisi yang benar.
 
-### E. Menyimpan hasil operasi Nomor C pada user_statistic.csv
+### 1E. Menyimpan hasil operasi Nomor C pada user_statistic.csv
 
 ![image](https://user-images.githubusercontent.com/16128257/113279919-ddcd2880-930d-11eb-8395-22bf75b31440.png)
 
@@ -73,7 +73,7 @@ Tidak ada.
 
 ## Soal2
 Tujuan : Mendapatkan report hasil penjualan dari data pada Laporan-TokoShiSop.tsv
-### A. Mendapatkan Row ID dan Profit Precentage terbesar
+### 2A. Mendapatkan Row ID dan Profit Precentage terbesar
 
 ![image](https://user-images.githubusercontent.com/62937814/113160069-56c57500-9267-11eb-91f2-a6d26f8f549b.png)
 
@@ -96,7 +96,7 @@ Tujuan : Mendapatkan report hasil penjualan dari data pada Laporan-TokoShiSop.ts
 #### Kendala
 Tidak terdapat kendala untuk 2a
 
-### B. Mendapatkan nama customer yang melakukan transaksi pada tahun 2017 di Albuquerque
+### 2B. Mendapatkan nama customer yang melakukan transaksi pada tahun 2017 di Albuquerque
 
 ![image](https://user-images.githubusercontent.com/62937814/113167023-82e3f480-926d-11eb-9b99-03187b962f69.png)
 
@@ -109,7 +109,7 @@ Tidak terdapat kendala untuk 2a
 #### Kendala
 Kendala yang terjadi pada saat mendapatkan value dari tahun transaksi, namun akhirnya kami menggunakan fungsi ```substr``` untuk mendapatkan value tersebut
 
-### C. Mencari segment dengan jumlah transaksi yang paling sedikit
+### 2C. Mencari segment dengan jumlah transaksi yang paling sedikit
 
 ![image](https://user-images.githubusercontent.com/62937814/113169963-4ebe0300-9270-11eb-9d56-598ac158fc4f.png)
 
@@ -166,7 +166,7 @@ END {
 
 Kemudian kami revisi dengan menggunakan array untuk menyimpan jumlah tersebut sehingga menjadi lebih efisien.
 
-### D. Mencari region yang memiliki jumlah profit yang paling sedikit
+### 2D. Mencari region yang memiliki jumlah profit yang paling sedikit
 
 ![image](https://user-images.githubusercontent.com/62937814/113173561-b75aaf00-9273-11eb-9f50-3f697ab28506.png)
 
@@ -179,8 +179,7 @@ Kemudian kami revisi dengan menggunakan array untuk menyimpan jumlah tersebut se
 #### Kendala
 Untuk nomor 2d ini memiliki kendala yang hampir mirip dengan 2c.
 
-### 2e
-memasukkan seluruh code ke dalam suatu file txt
+### 2E. Memasukkan Seluruh Code ke Dalam Suatu File .txt
 
 ![image](https://user-images.githubusercontent.com/62937814/113174935-15d45d00-9275-11eb-8063-b2dc4a2b75f0.png)
 
@@ -188,11 +187,75 @@ memasukkan seluruh code ke dalam suatu file txt
 Pada awalnya menggunakan ```>>``` namun saat dirun berkali2 menjadi ter-_concate_ kemudian kami ganti menjadi ```>``` agar bisa ter-_overwrite_ setiap kali program dijalankan
 
 
-## Solusi Soal3
--> menunggu deadline
+## Soal3
+Tujuan : Mengunduh ,menyimpan dan memindahkan ke zip beberapa file gambar dan log-nya ke sebuah folder menggunakan script yang akan dijalankan secara otomatis.
+
+### 3A.	Mengunduh gambar dan menyimpan log-nya ke sebuah file serta menghapus gambar yang sama
+
+![image](https://user-images.githubusercontent.com/16128257/113437262-85328400-9410-11eb-8106-aec63d7f9da3.png)
+
+#### Cara Pengerjaan
+1.	Tulis nama link asal foto dengan url
+2.	Lakukan pengulangan dengan menggunakan for. Pengulangan akan dilakukan hingga 23 kali.
+3.	Dalam pengulangan pertama, print filename dan filebaru. Lalu, download gambar dari url dan outputkan ke filebaru. log foto  dipasang ke foto.log
+4.	Lakukan pengulangan kedua. Kali ini untuk membandingkan file-file yang diunduh. Kita akan membandingkan $file dengan $filebaru menggunakan command cmp. 
+5.	Terakhir, buat 2 kemungkinan hasil pengecekan dengan menggunakan if. Didalam if, kita akan menggunakan -eq untuk membandingkan lagi filenya. Jika file-filenya berbeda, maka $filebaru tersebut akan didownload dan ditandai dengan id bertambah 1. Jika sama, maka $filebaru tadi akan dihapus menggunakan command rm
+
+#### Kendala
+Tidak ada.
+
+### 3B. Menjalankan script secara otomatis dan memindahkan gambar dan log-nya ke sebuah folder berpassword.
+
+![image](https://user-images.githubusercontent.com/16128257/113437434-c5920200-9410-11eb-92ba-0fa39e9b2f8f.png)
+![image](https://user-images.githubusercontent.com/16128257/113437444-c75bc580-9410-11eb-8b42-ad97330f9a41.png)
+
+#### Cara Pengerjaan
+1.	Buat folder baru dengan mkdir $folder. Folder tersebut akan diberi nama tanggal unduh gambar menggunakan `date '+%d-%m-%Y'`.
+2.	Pindahkan gambar-gambar yang diunduh beserta lognya ke folder baru tersebut menggunakan mv.
+3.	Agar dapat dijalankan secara otomatis, file soal3b.sh yang berisi kodingan pada gambar pertama akan dibash menggunakan cron 0 20 1-31/7,2-31/4 * * .
+
+#### Kendala
+Tidak ada.
+
+### 3C. Mengunduh gambar tipe pertama dan kedua secara bergantian dan membuat 2 folder terpisah
+
+![image](https://user-images.githubusercontent.com/16128257/113437478-de021c80-9410-11eb-9a92-fe016534fa44.png)
+![image](https://user-images.githubusercontent.com/16128257/113437485-e0fd0d00-9410-11eb-9c89-7b891893b122.png)
+
+#### Cara Pengerjaan
+1.	Pertama, buat data tanggal yang jelas. Today berarti tanggal saat ini, sedangkan yesterday berarti tanggalnya dikurangi 1. Lalu simpan folder yang akan digunakan
+2.	Catat 2 link url yang akan diunduh isinya
+3.	Periksa apakah ada folder kucing kemarin. Kita akan menggunakan if-else untuk mengeceknya. Jika folder kucing (dengan nama Kucing_$yesterday) ada, maka untuk folder hari ini kita membuat folder kelinci, dengan nama Kucing_$today. Jika tidak, buat folder bebas apa duluan (kami memilih folder Kucing_$today).
+4.	Periksa apakah foldernya sudah ada. Jika sudah, buat echo berisi pernyataan bahwa foldernya sudah ada.
+5.	Jika belum ada, buat folder baru dengan mkdir. buat id = 1. Berikutnya buat pengulangan sebanyak 23 kali. Di dalam pengulangan, buat filename dan filebaru dengan ketentuan nama. download gambar dari url dan outputkan ke filebaru. log foto  dipasang ke foto.log.
+6.	Lakukan pengecekan file pada folder secara berulang. yang dicek apakah file baru dan lama itu sama menggunakan line $file == $filebaru, lalu keduanya dibandingkan dengan cmp.
+7.	Jika filenya berbeda, masukkan file yang baru. Jika tidak, hapus saja dengan rm.
+
+#### Kendala
+Tidak ada.
+
+### 3D. Men-zip semua folder foto dan membuat passwordnya
+
+![image](https://user-images.githubusercontent.com/16128257/113437523-f70acd80-9410-11eb-9f92-8e06f75743f1.png)
+
+#### Cara Pengerjaan
+1.	Kita memasukkan file-file gambar ke folder zip menggunakan command zip -r --password "`date '+%m%d%Y'`" Koleksi.zip Kucing_*  Kelinci_* . Perintah zip untuk men-zip, -r untuk mengulang command menyimpan file ke zip, lalu --password digunakan untuk membuat password. Passwordnya adalah tanggal saat ini dengan format MMDDYYYY
+
+### 3E. Membuat script yang akan men-zip atau meng-unzip dan menghapus zip folder di waktu-waktu tertentu.
+
+![image](https://user-images.githubusercontent.com/16128257/113437585-13a70580-9411-11eb-8358-7f05b331f0d5.png)
+
+#### Cara Pengerjaan
+1.  Kita akan membuat 2 crontab untuk 2 kejadian berbeda 
+2.	Untuk men-zip, kita akan menggunakan cron 0 7-18 * * 1-5 dan membash file soal3d.sh (berisi kodingan nomor 3d)
+3.	Untuk meng-unzip dan menghapus folder zip, kita akan menggunakan cron     0 18-23,0-6 * * 1-5 serta membuat command unzip dan memasukkan password lewat -P. Lalu, folder zip tersebut dihapus dengan command rm
+
+#### Kendala
+Tidak ada.
+
 
 # Refrensi
 ## 1
 ## 2
-Substring Extraction (https://riptutorial.com/awk/example/23920/substring-extraction)
+1. Substring Extraction (https://riptutorial.com/awk/example/23920/substring-extraction)
 ## 3
