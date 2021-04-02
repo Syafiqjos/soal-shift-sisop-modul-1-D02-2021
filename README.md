@@ -260,6 +260,13 @@ Tidak ada.
 
 # Refrensi
 ## 1
+1. https://unix.stackexchange.com/questions/93327/using-a-perl-compatible-regex-with-gnu-grep-p
+2. https://www.geeksforgeeks.org/wc-command-linux-examples/
+3. https://stackoverflow.com/questions/1521462/looping-through-the-content-of-a-file-in-bash
 ## 2
 1. Substring Extraction (https://riptutorial.com/awk/example/23920/substring-extraction)
 ## 3
+1. https://www.tecmint.com/create-password-protected-zip-file-in-linux/
+2. https://superuser.com/questions/1023012/how-to-unzip-password-protected-zip-file-using-terminal/1023020
+3. https://askubuntu.com/questions/315335/bash-command-for-each-file-in-a-folder
+4. https://stackoverflow.com/questions/26475358/negate-if-condition-in-bash-script
